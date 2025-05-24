@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Init
+    init: |
+      composer install
+      cp .env.example .env
+      php artisan key:generate
+  - name: Serve
+    command: |
+      php artisan serve --host=0.0.0.0 --port=8000
+
+ports:
+  - port: 8000
+    onOpen: open-preview
